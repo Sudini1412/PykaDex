@@ -1,3 +1,6 @@
+
+# this file will import a .pickle file and then make a .model file
+
 import numpy as np 
 import matplotlib.pyplot as plt 
 
@@ -14,16 +17,22 @@ from tensorflow.keras.callbacks import TensorBoard
 
 import time
 
+# added by ben
+import os
+os.environ['CUDA_VISIBLE_DEVICES'] = "0"
+#
 
+path_to_pickles = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/pickle/'
 
 NAME = "Pokemon-test-cnn-64x2-{}".format(int(time.time()))
-tensorboard = TensorBoard(log_dir='logs/{}'.format(NAME)) #after the run is done type in 'tensorboard --logdir logs/fit' in your command prompt/terminal and it should give u a weblink
+tensorboard = TensorBoard(log_dir=path_to_pickles+'logs/{}'.format(NAME)) #after the run is done type in 'tensorboard --logdir logs/fit' in your command prompt/terminal and it should give u a weblink
 
-X = pickle.load(open("X.pickle", "rb"))
-y = pickle.load(open("y.pickle","rb"))
+
+X = pickle.load(open(path_to_pickles+"x_5trial.pickle", "rb"))
+y = pickle.load(open(path_to_pickles+"y_5trial.pickle", "rb"))
 
 X = np.array(X/255.0)
-y=np.array(y)
+y = np.array(y)
 
 model = Sequential()
 
@@ -34,7 +43,6 @@ model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Conv2D(64, (3,3) ))
 model.add(Activation("relu"))
 model.add(MaxPooling2D(pool_size=(2,2)))
-
 model.add(Flatten())
 
 model.add(Dense(64))
@@ -46,6 +54,4 @@ model.add(Activation("sigmoid"))
 model.compile(loss="binary_crossentropy", optimizer="adam", metrics= ["accuracy"])
 model.fit(X,y,batch_size=32, epochs=30, validation_split=0.1, callbacks=[tensorboard])
 
-model.save('cnn.model')
-
-# this file will import a .pickle file and then make a .model file
+model.save(path_to_pickles+'Pykdex_5Pokemon.model')
