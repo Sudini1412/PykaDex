@@ -21,3 +21,4 @@ foo@bar:~$ pip3 install -r requirments.txt
  - Use `Get_TrainingData.py` to download all pokemon images. (Default 200 images of eacg pokemon)
  - Use `Make_TrainingData.py` to generate `.pickle` files which are arrays storing the gathered images, which have been resized and greyscaled.
  - Use `Train_Model.py` to train and make a `.model` file, which is the trained nueral network model.
+ - Use `Test_Model.py` to trial images of pokemon to be identified.
