@@ -5,4 +5,5 @@ List of websites to reference through the project:\
 [bing downloader](https://github.com/gurugaurav/bing_image_downloader)\
 [pokemon list](https://pokemondb.net/pokedex/national)\
 [cuda wsl](https://github.com/microsoft/WSL/issues/1788)\
-[cuda wsl 2](https://ubuntu.com/blog/getting-started-with-cuda-on-ubuntu-on-wsl-2)
+[cuda wsl 2](https://ubuntu.com/blog/getting-started-with-cuda-on-ubuntu-on-wsl-2)\
+[wls2 ](https://scotch.io/bar-talk/trying-the-new-wsl-2-its-fast-windows-subsystem-for-linux)
