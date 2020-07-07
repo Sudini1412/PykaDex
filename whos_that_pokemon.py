@@ -1,5 +1,5 @@
 import tensorflow as tf 
-from colours import *
+from Python_General.colours import *
 import readline
 import cv2
 import os

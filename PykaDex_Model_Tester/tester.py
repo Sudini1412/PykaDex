@@ -1,13 +1,16 @@
 import cv2
 import tensorflow as tf 
 import os
-from colours import *
+import sys
+sys.path.append('/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex')
+from Python_General.colours import *
 import readline
 
+#catergories list+order update with model
 CATEGORIES = ['Bulbasaur','Charmander', 'Eevee', 'Pikachu', 'Squirtle']
 
 path_to_model = ''
-path_to_test_images = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_Model_Tester/test_images/'
+path_to_test_images = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex/PykaDex_Model_Tester/test_images/'
 
 ##########################################################################
 
