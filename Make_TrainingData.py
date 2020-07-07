@@ -1,7 +1,6 @@
 
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
-#from PIL import Image
 import keras
 import cv2
 import time
@@ -17,7 +16,7 @@ import numpy as np
 #path_to_training_data = 
 
 #bens path
-path_to_training_data = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/'
+path_to_training_data = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/'+'Trial_Data3/'
 
 #########################################################################
 
@@ -48,10 +47,39 @@ def save_TD_pickle(TD,name_tag):
 
 #######################################################################
 
-
 def make_TD():
     """
+    """
+
+    DATADIR    = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/Trial_Data3/Gen1/'
+    CATEGORIES = ['Bulbasaur','Charmander', 'Eevee', 'Pikachu', 'Squirtle']
+
+    IMG_SIZE = 50
+
+    TD = []
+    for category in CATEGORIES:
+        path = os.path.join(DATADIR,category) # path to pokemon dir
+        print(path)
+        class_num = CATEGORIES.index(category)
+        for img in os.listdir(path):
+            try:
+                img_array = cv2.imread(os.path.join(path,img), cv2.IMREAD_GRAYSCALE)
+                new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))  
+                TD.append([new_array,class_num])
+            except Exception as e:
+                pass
+
+    print('training data made, len={}, for {} pokemon'.format(len(TD),len(CATEGORIES)))
+    save_TD_pickle(TD,Genfolder)
+
+
+#######################################################################
+
+
+def make_all_TD():
+    """
     makes a list of resized greyscaled images from a directory
+    - need to be careful of oredering as indexs depend on this
     """
     TD = []
     poke_counter = 0
@@ -87,17 +115,14 @@ def make_TD():
                 if (image == '.DS_Store') or (image == '._.DS_Store'):
                     continue
 
-                if (ext == 'GIF') or (ext == 'gif'):
-                    continue
-
                 #print(image)
-                size = 30
+                size = 50
                 path_to_image = pokemon+image
                 #print(path_to_image)
                 try:
                     contents    = cv2.imread(path_to_image,cv2.IMREAD_GRAYSCALE)
                     newcontents = cv2.resize(contents,(size,size))
-                    TD.append([newcontents,pokemon])
+                    TD.append([newcontents,poke_counter])
 
                 except:
                     pass
