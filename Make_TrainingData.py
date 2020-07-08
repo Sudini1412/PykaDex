@@ -12,6 +12,7 @@ import numpy as np
 #########################################################################
 
 # program should readin from your traing data folder and then create a pickle folder in it
+
 #sudi path
 #path_to_training_data = 
 
@@ -20,7 +21,7 @@ path_to_training_data = '/mnt/c/Users/benja/Documents/Programming/Python Project
 
 #########################################################################
 
-def save_TD_pickle(TD,name_tag):
+def save_TD_pickle(IMG_SIZE,TD,name_tag):
     """
     saves your training data to save it having to be regernerated everytime you tweak your model
     """
@@ -33,7 +34,7 @@ def save_TD_pickle(TD,name_tag):
         x.append(features)
         y.append(label)
 
-    size = 30
+    size = IMG_SIZE
 
     x = np.array(x).reshape(-1,size,size,1) #use 3 to make rgb
 
@@ -47,14 +48,12 @@ def save_TD_pickle(TD,name_tag):
 
 #######################################################################
 
-def make_TD():
+def make_TD(IMG_SIZE,name_tag):
     """
     """
 
     DATADIR    = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/Trial_Data3/Gen1/'
     CATEGORIES = ['Bulbasaur','Charmander', 'Eevee', 'Pikachu', 'Squirtle']
-
-    IMG_SIZE = 50
 
     TD = []
     for category in CATEGORIES:
@@ -70,7 +69,7 @@ def make_TD():
                 pass
 
     print('training data made, len={}, for {} pokemon'.format(len(TD),len(CATEGORIES)))
-    save_TD_pickle(TD,Genfolder)
+    save_TD_pickle(IMG_SIZE,TD,name_tag)
 
 
 #######################################################################
@@ -132,4 +131,4 @@ def make_all_TD():
         
 #########################################################################
 
-make_TD()
+make_TD(96,'96_RGB')
