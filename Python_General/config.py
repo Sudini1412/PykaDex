@@ -22,14 +22,14 @@ if user=='ben':
 if user=='sudi':
 
     # PATHS IN PYKADEX
-    path_to_PykaDex            = ''
-    path_to_models             = path_to_PykaDex+''
-    path_to_test_images        = path_to_PykaDex+''
+    path_to_PykaDex            = '/Users/sudinithegreat/Desktop/PykaDex/'
+    path_to_models             = path_to_PykaDex+'cnn/'
+    path_to_test_images        = path_to_PykaDex+'cnn'
     
     # PATHS OUTSIDE PYKADEX
-    path_to_pickles            = ''
-    path_to_training_data_Gens = ''
-    path_to_training_data      = ''
+    path_to_pickles            = 'cnn'
+    path_to_training_data_Gens = 'cnn'
+    path_to_training_data      = 'cnn'
 
     # CATEGORIES
     CATEGORIES                 =  ['Charmander', 'Bulbasaur']
