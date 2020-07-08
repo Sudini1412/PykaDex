@@ -27,9 +27,9 @@ if user=='sudi':
     path_to_test_images        = path_to_PykaDex+'PykaDex_Model_Tester/test_images/'
     
     # PATHS OUTSIDE PYKADEX
-    path_to_pickles            = '/Users/sudinithegreat/Desktop/PykaDex/cnn'
-    path_to_training_data_Gens = '/Users/sudinithegreat/Desktop/PykaDex/cnn'
-    path_to_training_data      = '/Users/sudinithegreat/Desktop/PykaDex/cnn'
+    path_to_pickles            = '/Users/sudinithegreat/Desktop/PykaDex/cnn/'
+    path_to_training_data_Gens = '/Users/sudinithegreat/Desktop/PykaDex/cnn/'
+    path_to_training_data      = '/Users/sudinithegreat/Desktop/PykaDex/cnn/'
 
     # CATEGORIES
     CATEGORIES                 =  ['Charmander', 'Bulbasaur']
