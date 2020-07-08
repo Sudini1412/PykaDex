@@ -3,7 +3,10 @@ import tensorflow as tf
 import os
 import sys
 # goes up one dir to get config.py
-sys.path.append('/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex/')
+# parentdir = os.dirname(os.dirname(__file__))
+# print(parentdir)
+# sys.path.append(parentdir)
+sys.path.append(os.path.abspath(os.path.join(__file__,  "..", "..")))
 from Python_General.colours import *
 from Python_General.config import *
 

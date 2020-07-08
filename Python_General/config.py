@@ -34,4 +34,4 @@ if user=='sudi':
     # CATEGORIES
     CATEGORIES                 =  ['Charmander', 'Bulbasaur']
 
-   catimg_default = '-t 75'
+    catimg_default = '-t 75'
