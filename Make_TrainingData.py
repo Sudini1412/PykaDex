@@ -8,16 +8,11 @@ import os
 import random
 import pickle
 import numpy as np
+from Python_General.config import *
 
 #########################################################################
 
 # program should readin from your traing data folder and then create a pickle folder in it
-
-#sudi path
-#path_to_training_data = 
-
-#bens path
-path_to_training_data = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/'+'Trial_Data3/'
 
 #########################################################################
 
@@ -38,11 +33,11 @@ def save_TD_pickle(IMG_SIZE,TD,name_tag):
 
     x = np.array(x).reshape(-1,size,size,1) #use 3 to make rgb
 
-    pickle_out = open(path_to_training_data+'pickle/x_{}.pickle'.format(name_tag),'wb')
+    pickle_out = open(path_to_training_pickles+'/x_{}.pickle'.format(name_tag),'wb')
     pickle.dump(x,pickle_out)
     pickle_out.close()
 
-    pickle_out = open(path_to_training_data+'pickle/y_{}.pickle'.format(name_tag),'wb')
+    pickle_out = open(path_to_training_pickles+'/y_{}.pickle'.format(name_tag),'wb')
     pickle.dump(y,pickle_out)
     pickle_out.close()
 
@@ -52,8 +47,7 @@ def make_TD(IMG_SIZE,name_tag):
     """
     """
 
-    DATADIR    = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/Trial_Data3/Gen1/'
-    CATEGORIES = ['Bulbasaur','Charmander', 'Eevee', 'Pikachu', 'Squirtle']
+    DATADIR = path_to_training_data
 
     TD = []
     for category in CATEGORIES:

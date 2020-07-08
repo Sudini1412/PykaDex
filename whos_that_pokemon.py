@@ -1,17 +1,12 @@
 import tensorflow as tf 
 from Python_General.colours import *
+from Python_General.config import *
 import readline
 import cv2
 import os
 
 # add the below alias to your bash file
 # alias whos_that_pokemon="python3 path_to_/PykaDex/whos_that_pokemon.py"
-
-##########################################################################
-
-#to updated with model verisons
-CATEGORIES = ['Charmander', 'Bulbasaur']
-path_to_model = '/Users/sudinithegreat/Desktop/PykaDex/cnn/'
 
 ##########################################################################
 
@@ -61,7 +56,7 @@ def list_jpgs_in_dir(path_to_dir):
 
 ##########################################################################
 
-model = tf.keras.models.load_model(path_to_model+"newcnn.model")
+model = tf.keras.models.load_model(path_to_models+"newcnn.model")
 print(red+'='*78)
 print(red+""" ________  ___    ___ ___  __    ________  ________  _______      ___    ___ 
 |\   __  \|\  \  /  /|\  \|\  \ |\   __  \|\   ___ \|\  ___ \    |\  \  /  /|
@@ -86,7 +81,7 @@ if image == 'exit':
 
 if image in choice_list:
     print(red+'='*78)
-    os.system('catimg -t 75 {}'.format(image))
+    os.system('catimg '+catimg_default+' {}'.format(image))
     prediction = model.predict([prepare(image)])
     print(red+'='*78)
 

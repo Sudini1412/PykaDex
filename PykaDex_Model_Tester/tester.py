@@ -2,17 +2,13 @@ import cv2
 import tensorflow as tf 
 import os
 import sys
-sys.path.append('/Users/sudinithegreat/Developer/PykaDex/')
+# goes up one dir to get config.py
+sys.path.append('/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex/')
 from Python_General.colours import *
+from Python_General.config import *
+
 import readline
 
-#catergories list+order update with model
-# CATEGORIES = ['Bulbasaur','Charmander', 'Eevee', 'Pikachu', 'Squirtle']
-CATEGORIES = ['Charmander', 'Bulbasaur']
-
-path_to_model = ''
-path_to_model = '/Users/sudinithegreat/Desktop/PykaDex/cnn/'
-path_to_test_images = '/Users/sudinithegreat/Developer/PykaDex/PykaDex_Model_Tester/test_images/'
 
 ##########################################################################
 
@@ -70,12 +66,12 @@ if model_ == 'exit':
         exit(0)
 
 if model_ in choice_list:
-    model = tf.keras.models.load_model(path_to_model+model_)
+    model = tf.keras.models.load_model(path_to_models+model_)
 
 else:
     print(red+'not a valid input'+white)
 
-model = tf.keras.models.load_model(path_to_model+"newcnn.model")
+model = tf.keras.models.load_model(path_to_models+"newcnn.model")
 
 print('#'*20)
 print('\nBegining Tests..')
