@@ -1,7 +1,7 @@
 
 #set this to your name
 
-user = 'ben'
+user = 'sudi'
 
 if user=='ben':
      # PATHS IN PYKADEX
