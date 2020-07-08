@@ -1,7 +1,7 @@
 
 #set this to your name
 
-user = 'sudi'
+user = 'ben'
 
 if user=='ben':
      # PATHS IN PYKADEX
@@ -15,7 +15,8 @@ if user=='ben':
     path_to_training_data      = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/Trial_Data3/'
 
     # CATEGORIES
-    CATEGORIES                 =  ['Charmander', 'Bulbasaur']
+    CATEGORIES = ['Bulbasaur','Charmander', 'Eevee', 'Pikachu', 'Squirtle']
+
 
     catimg_default = '-w 75'
 

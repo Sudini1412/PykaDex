@@ -3,6 +3,7 @@
 import sys
 print(sys.version)
 
+from Python_General import *
 import numpy as np 
 import matplotlib.pyplot as plt
 
@@ -21,9 +22,41 @@ import time
 
 # added by ben
 #import os
-#os.environ['CUDA_VISIBLE_DEVICES'] = "0"
+    #os.environ['CUDA_VISIBLE_DEVICES'] = "0"
 
-def make_model(RGB,IMG_SIZE,name_tag)
+def make_model(name_tag):
+    NAME = "Pokemon-test-cnn-64x2-{}".format(int(time.time()))
+    tensorboard = TensorBoard(log_dir=path_to_pickles+'logs/{}'.format(NAME)) #after the run is done type in 'tensorboard --logdir logs/fit' in your command prompt/terminal and it should give u a weblink
+
+    X = pickle.load(open(path_to_pickles+'x_{}.pickle'.format(name_tag), "rb"))
+    y = pickle.load(open(path_to_pickles+'y_{}.pickle'.format(name_tag), "rb"))
+
+    X = np.array(X/255.0)
+    y = np.array(y)
+
+    model = Sequential()
+
+    model.add(Conv2D(32, (3,3), input_shape = X.shape[1:]))
+    model.add(Activation("relu"))
+    model.add(MaxPooling2D(pool_size=(3,3)))
+
+    model.add(Conv2D(64, (3,3) ))
+    model.add(Activation("relu"))
+    model.add(MaxPooling2D(pool_size=(2,2)))
+    model.add(Flatten())
+
+    model.add(Dense(64))
+    model.add(Activation('relu'))
+
+    model.add(Dense(32))
+    model.add(Activation("softmax"))
+
+    model.compile(loss="binary_crossentropy", optimizer="adam", metrics= ["accuracy"])
+    model.fit(X,y,batch_size=32, epochs=30, validation_split=0.1)
+
+    model.save(path_to_models+name_tag+'.model')
+
+def make_model_broken(name_tag):
 
     NAME = name_tag+"model-{}".format(int(time.time()))
     tensorboard = TensorBoard(log_dir=path_to_pickles+'logs/{}'.format(NAME)) #after the run is done type in 'tensorboard --logdir logs/fit' in your command prompt/terminal and it should give u a weblink
@@ -39,16 +72,16 @@ def make_model(RGB,IMG_SIZE,name_tag)
 
     model = Sequential()
 
-    model.add(Conv2D(32, (3,3), input_shape = X.shape[1:],activation("relu")))
+    model.add(Conv2D(32, (3,3), input_shape = X.shape[1:],activation ="relu"))
 
     #ignored batch norm as we divded ?
 
     model.add(MaxPooling2D(pool_size=(3,3)))
-    model.add(Dropout(0.25))
+    #model.add(Dropout(0.25))
 
-    model.add(Conv2D(64, (3,3) ,activation("relu"))
+    model.add(Conv2D(64, (3,3) ,activation("relu")))
     model.add(MaxPooling2D(pool_size=(2,2)))
-    model.add(Dropout(0.25))
+    #model.add(Dropout(0.25))
 
     model.add(Flatten())
 
@@ -69,4 +102,4 @@ def make_model(RGB,IMG_SIZE,name_tag)
 
     model.save(name_tag+'.model')
 
-make_model(96,'96_RGB')
+make_model('96_RGB')
