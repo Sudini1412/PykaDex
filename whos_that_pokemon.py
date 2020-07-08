@@ -10,15 +10,15 @@ import os
 ##########################################################################
 
 #to updated with model verisons
-CATEGORIES = ['Bulbasaur','Charmander', 'Eevee', 'Pikachu', 'Squirtle']
-path_to_model = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex/'
+CATEGORIES = ['Charmander', 'Bulbasaur']
+path_to_model = '/Users/sudinithegreat/Desktop/PykaDex/cnn/'
 
 ##########################################################################
 
 def prepare(filepath):
     """
     """
-    IMG_SIZE = 50
+    IMG_SIZE = 80
     img_array = cv2.imread(filepath, cv2.IMREAD_GRAYSCALE)
     new_array = cv2.resize(img_array, (IMG_SIZE,IMG_SIZE))
     return new_array.reshape(-1 , IMG_SIZE,IMG_SIZE,1)
@@ -61,7 +61,7 @@ def list_jpgs_in_dir(path_to_dir):
 
 ##########################################################################
 
-model = tf.keras.models.load_model(path_to_model+"Pykdex_5Pokemon.model")
+model = tf.keras.models.load_model(path_to_model+"newcnn.model")
 print(red+'='*78)
 print(red+""" ________  ___    ___ ___  __    ________  ________  _______      ___    ___ 
 |\   __  \|\  \  /  /|\  \|\  \ |\   __  \|\   ___ \|\  ___ \    |\  \  /  /|
@@ -86,7 +86,7 @@ if image == 'exit':
 
 if image in choice_list:
     print(red+'='*78)
-    os.system('catimg -w 75 {}'.format(image))
+    os.system('catimg -t 75 {}'.format(image))
     prediction = model.predict([prepare(image)])
     print(red+'='*78)
 

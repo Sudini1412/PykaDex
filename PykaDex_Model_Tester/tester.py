@@ -2,15 +2,17 @@ import cv2
 import tensorflow as tf 
 import os
 import sys
-sys.path.append('/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex')
+sys.path.append('/Users/sudinithegreat/Developer/PykaDex/')
 from Python_General.colours import *
 import readline
 
 #catergories list+order update with model
-CATEGORIES = ['Bulbasaur','Charmander', 'Eevee', 'Pikachu', 'Squirtle']
+# CATEGORIES = ['Bulbasaur','Charmander', 'Eevee', 'Pikachu', 'Squirtle']
+CATEGORIES = ['Charmander', 'Bulbasaur']
 
 path_to_model = ''
-path_to_test_images = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex/PykaDex_Model_Tester/test_images/'
+path_to_model = '/Users/sudinithegreat/Desktop/PykaDex/cnn/'
+path_to_test_images = '/Users/sudinithegreat/Developer/PykaDex/PykaDex_Model_Tester/test_images/'
 
 ##########################################################################
 
@@ -51,7 +53,7 @@ def list_models_in_dir(path_to_dir):
 ##########################################################################
 
 def prepare(filepath):
-    IMG_SIZE = 50
+    IMG_SIZE = 80
     img_array = cv2.imread(filepath, cv2.IMREAD_GRAYSCALE)
     new_array = cv2.resize(img_array, (IMG_SIZE,IMG_SIZE))
     return new_array.reshape(-1 , IMG_SIZE,IMG_SIZE,1)
@@ -73,7 +75,7 @@ if model_ in choice_list:
 else:
     print(red+'not a valid input'+white)
 
-model = tf.keras.models.load_model(path_to_model+"Pykdex_5Pokemon.model")
+model = tf.keras.models.load_model(path_to_model+"newcnn.model")
 
 print('#'*20)
 print('\nBegining Tests..')
@@ -97,8 +99,8 @@ print('Tests complete with {}% accuracy'.format(float(sucssess_num/counter)*100)
 print('#'*20)
 
 #other tests
-prediction3 = model.predict([prepare(path_to_test_images+"../sudi_pika.jpg")])
+prediction3 = model.predict([prepare(path_to_test_images+"../sudi_bulba.jpg")])
 print('sudi test (pikachu) = {}'.format(CATEGORIES[int(prediction3[0][0])]))
 
-prediction4 = model.predict([prepare(path_to_test_images+"../sudi_pika2.jpg")])
+prediction4 = model.predict([prepare(path_to_test_images+"../sudi_char.jpg")])
 print('sudi test 2 (pikachu) = {}'.format(CATEGORIES[int(prediction4[0][0])]))
