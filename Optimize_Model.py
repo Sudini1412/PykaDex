@@ -11,9 +11,10 @@ from tensorflow.keras.callbacks import TensorBoard
 import time
 from Python_General.config import *
 
-# NAME = "Pokemon-test-cnn-64x2-{}".format(int(time.time()))
 
 def optimze(name_tag):
+	"""
+	"""
 
 	X = pickle.load(open(path_to_pickles+'x_{}.pickle'.format(name_tag), "rb"))
 	y = pickle.load(open(path_to_pickles+'y_{}.pickle'.format(name_tag), "rb"))
@@ -29,9 +30,9 @@ def optimze(name_tag):
 	for dens_layer in dense_layers:
 		for layer_size in layer_sizes:
 			for conv_layer in conv_layers:
-				NAME = "{}-conv-{}-nodes-{}-dense-{}".format(conv_layer,layer_size,dens_layer, int(time.time()))
-				print(NAME)
-				tensorboard = TensorBoard(log_dir='newlogs/{}'.format(NAME)) #after the run is done type in 'tensorboard --logdir logs/fit' in your command prompt/terminal and it should give u a weblink
+				#NAME = "{}-conv-{}-nodes-{}-dense-{}".format(conv_layer,layer_size,dens_layer, int(time.time()))
+				#print(NAME)
+				#tensorboard = TensorBoard(log_dir=path_to_logs+'{}'.format(NAME)) #after the run is done type in 'tensorboard --logdir logs/fit' in your command prompt/terminal and it should give u a weblink
 
 				model = Sequential()
 
@@ -54,7 +55,7 @@ def optimze(name_tag):
 				model.add(Activation("softmax"))
 
 				model.compile(loss="binary_crossentropy", optimizer="adam", metrics= ["accuracy"])
-				model.fit(X,y,batch_size=32, epochs=3, validation_split=0.1, callbacks=[tensorboard])
+				model.fit(X,y,batch_size=32, epochs=3, validation_split=0.1)#, callbacks=[tensorboard])
 
 				model.save(path_to_models+'{}_{}_{}_optimzer.model'.format(str(dens_layer),str(layer_size),str(conv_layer)))
 

@@ -1,7 +1,8 @@
 
 #set this to your name
-
 user = 'ben'
+
+##################################################################################
 
 if user=='ben':
      # PATHS IN PYKADEX
@@ -11,14 +12,17 @@ if user=='ben':
 
     # PATHS OUTSIDE PYKADEX
     path_to_pickles            = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/Trial_Data3/pickle/'
+    path_to_logs               = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/logs/'
     path_to_training_data_Gens = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/'
     path_to_training_data      = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/Trial_Data3/'
 
     # CATEGORIES
-    CATEGORIES = ['Bulbasaur','Charmander', 'Eevee', 'Pikachu', 'Squirtle']
+    CATEGORIES                 = ['Bulbasaur','Charmander', 'Eevee', 'Pikachu', 'Squirtle']
 
 
     catimg_default = '-w 75'
+
+##################################################################################
 
 if user=='sudi':
 
@@ -29,6 +33,7 @@ if user=='sudi':
     
     # PATHS OUTSIDE PYKADEX
     path_to_pickles            = '/Users/sudinithegreat/Desktop/PykaDex/cnn/'
+    path_to_logs               = '/Users/sudinithegreat/Desktop/PykaDex/cnn/'
     path_to_training_data_Gens = '/Users/sudinithegreat/Desktop/PykaDex/cnn/'
     path_to_training_data      = '/Users/sudinithegreat/Desktop/PykaDex/cnn/'
 
@@ -36,3 +41,5 @@ if user=='sudi':
     CATEGORIES                 =  ['Charmander', 'Bulbasaur']
 
     catimg_default = '-t 75'
+
+##################################################################################

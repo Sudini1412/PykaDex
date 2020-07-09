@@ -59,7 +59,7 @@ def make_model(name_tag):
 def make_model_broken(name_tag):
 
     NAME = name_tag+"model-{}".format(int(time.time()))
-    tensorboard = TensorBoard(log_dir=path_to_pickles+'logs/{}'.format(NAME)) #after the run is done type in 'tensorboard --logdir logs/fit' in your command prompt/terminal and it should give u a weblink
+    tensorboard = TensorBoard(log_dir=path_to_logs+'logs/{}'.format(NAME)) #after the run is done type in 'tensorboard --logdir logs/fit' in your command prompt/terminal and it should give u a weblink
 
 
     X = pickle.load(open(path_to_pickles+'x_{}.pickle'.format(name_tag), "rb"))
