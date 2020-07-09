@@ -43,3 +43,23 @@ if user=='sudi':
     catimg_default = '-t 75'
 
 ##################################################################################
+
+if user=='ben-pi':
+     # PATHS IN PYKADEX
+    path_to_PykaDex            = '/home/pi/DocuMentos/PykaDex/'
+    path_to_models             = path_to_PykaDex+'Models/'
+    path_to_test_images        = path_to_PykaDex+'PykaDex_Model_Tester/test_images/'
+
+    # PATHS OUTSIDE PYKADEX
+    path_to_pickles            = '/media/usb/PykaDex_TrainingData/pickle/'
+    path_to_logs               = '/media/usb/PykaDex_TrainingData//'
+    path_to_training_data_Gens = '/media/usb/PykaDex_TrainingData/'
+    path_to_training_data      = '/media/usb/PykaDex_TrainingData/'
+
+    # CATEGORIES
+    CATEGORIES                 = ['Bulbasaur','Charmander', 'Eevee', 'Pikachu', 'Squirtle']
+
+
+    catimg_default = '-w 75'
+
+##################################################################################
