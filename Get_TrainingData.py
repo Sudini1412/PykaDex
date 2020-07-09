@@ -2,6 +2,7 @@
 # MOVE THIS FILE INTO A SEPERATE LOCATION ON YOUR MACHINE
 from bing_image_downloader import downloader
 import os
+from Python_General.config import *
 
 #######################################################
 
@@ -18,7 +19,7 @@ gen7 = ['Rowlet', 'Dartrix', 'Decidueye', 'Litten', 'Torracat', 'Incineroar', 'P
 gen8 = ['Grookey', 'Thwackey', 'Rillaboom', 'Scorbunny', 'Raboot', 'Cinderace', 'Sobble', 'Drizzile', 'Inteleon', 'Skwovet', 'Greedent', 'Rookidee', 'Corvisquire', 'Corviknight', 'Blipbug', 'Dottler', 'Orbeetle', 'Nickit', 'Thievul', 'Gossifleur', 'Eldegoss', 'Wooloo', 'Dubwool', 'Chewtle', 'Drednaw', 'Yamper', 'Boltund', 'Rolycoly', 'Carkol', 'Coalossal', 'Applin', 'Flapple', 'Appletun', 'Silicobra', 'Sandaconda', 'Cramorant', 'Arrokuda', 'Barraskewda', 'Toxel', 'Toxtricity', 'Sizzlipede', 'Centiskorch', 'Clobbopus', 'Grapploct', 'Sinistea', 'Polteageist', 'Hatenna', 'Hattrem', 'Hatterene', 'Impidimp', 'Morgrem', 'Grimmsnarl', 'Obstagoon', 'Perrserker', 'Cursola', "Sirfetch'd", 'Mr. Rime', 'Runerigus', 'Milcery', 'Alcremie', 'Falinks', 'Pincurchin', 'Snom', 'Frosmoth', 'Stonjourner', 'Eiscue', 'Indeedee', 'Morpeko', 'Cufant', 'Copperajah', 'Dracozolt', 'Arctozolt', 'Dracovish', 'Arctovish', 'Duraludon', 'Dreepy', 'Drakloak', 'Dragapult', 'Zacian', 'Zamazenta', 'Eternatus', 'Kubfu', 'Urshifu', 'Zarude']
 
 #path to place you want training data to be dumped if not same dir as this py file
-training_data_loaction = '.'
+#path_to_training_data = '.'
 
 gendirs = ['Gen1','Gen2','Gen3','Gen4','Gen5','Gen6','Gen7','Gen8']
 
@@ -26,14 +27,14 @@ gens = [gen1,gen2,gen3,gen4,gen5,gen6,gen7,gen8]
 
 for gen in gens:
     gendir = gendirs[gens.index(gen)]
-    directory = training_data_loaction+'/'+gendir+'/'
+    directory = path_to_training_data+'/'+gendir+'/'
     if not os.path.exists(directory):
             os.makedirs(directory)
 
     for pokemon in gen:
         downloader.download(pokemon+' pokemon', limit=lim, adult_filter_off=True, force_replace=False)
         #moves data to new location as we dont like dataset/bing/...
-        os.system('mv dataset/bing/{} {}'.format(pokemon+'\ pokemon',training_data_loaction+'/'+gendir+'/'+pokemon))
+        os.system('mv dataset/bing/{} {}'.format(pokemon+'\ pokemon',path_to_training_data+'/'+gendir+'/'+pokemon))
         #removes dataset/bing/ folder
         os.system('rm -rf dataset/')
 
