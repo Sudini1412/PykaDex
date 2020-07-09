@@ -34,7 +34,8 @@ for gen in gens:
     for pokemon in gen:
         downloader.download(pokemon+' pokemon', limit=lim, adult_filter_off=True, force_replace=False)
         #moves data to new location as we dont like dataset/bing/...
-        os.system('mv dataset/bing/{} {}'.format(pokemon+'\ pokemon',path_to_training_data+'/'+gendir+'/'+pokemon))
+        # for pi there is no bing folder 
+        os.system('mv dataset/{} {}'.format(pokemon+'\ pokemon',path_to_training_data+'/'+gendir+'/'+pokemon))
         #removes dataset/bing/ folder
         os.system('rm -rf dataset/')
 
