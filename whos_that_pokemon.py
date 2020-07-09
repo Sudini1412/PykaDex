@@ -88,7 +88,7 @@ if image in choice_list:
     print(pink+'The image scanned is of a {}{}'.format(yellow,CATEGORIES[int(prediction[0][0])]))
     print(red+'='*78)
 
-    text = 'espeak "The image scanned is of a {}"'.format(CATEGORIES[int(prediction[0][0])]))
+    text = 'espeak "The image scanned is of a {}"'.format(CATEGORIES[int(prediction[0][0])])
     os.system(text)
 
 else:
