@@ -28,7 +28,7 @@ class Bing():
         with open(file_path, 'wb') as f:
             f.write(image)
 
-    def download_image(self, link, query):
+    def download_image(self, link, query, output_dir):
         self.download_count += 1
         
         # Get the image link
