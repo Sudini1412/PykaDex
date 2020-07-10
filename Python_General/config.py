@@ -55,7 +55,7 @@ if user=='ben-pi':
     # PATHS OUTSIDE PYKADEX
     path_to_usb                = '/media/pi/PI_EXT/'
     path_to_pickles            = path_to_usb+'PykaDex_TrainingData/pickle/'
-    path_to_logs               = path_to_usb+'PykaDex_TrainingData//'
+    path_to_logs               = path_to_usb+'PykaDex_TrainingData/'
     path_to_training_data_Gens = path_to_usb+'PykaDex_TrainingData/'
     path_to_training_data      = path_to_usb+'PykaDex_TrainingData/'
 
@@ -64,6 +64,6 @@ if user=='ben-pi':
 
 
     catimg_default = '-w 75'
-    bing_image_downloader_ver = '1.03'
+    bing_image_downloader_ver = '1.02'
 
 ##################################################################################
