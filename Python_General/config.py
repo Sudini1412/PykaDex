@@ -21,7 +21,7 @@ if user=='ben':
 
 
     catimg_default = '-w 75'
-    bing_image_downloader_ver = '1.02'
+    bing_image_downloader_ver = '1.0.2'
 
 ##################################################################################
 
@@ -42,7 +42,7 @@ if user=='sudi':
     CATEGORIES                 =  ['Charmander', 'Bulbasaur']
 
     catimg_default = '-t 75'
-    bing_image_downloader_ver = '1.02'
+    bing_image_downloader_ver = '1.0.2'
 
 ##################################################################################
 
@@ -64,6 +64,6 @@ if user=='ben-pi':
 
 
     catimg_default = '-w 75'
-    bing_image_downloader_ver = '1.02'
+    bing_image_downloader_ver = '1.0.2'
 
 ##################################################################################
