@@ -1,10 +1,10 @@
 
-#set this to your name
-user = 'ben-pi'
+import socket
+user = socket.gethostname()
 
 ##################################################################################
 
-if user=='ben':
+if user=='BLUNT-RAZ3R':
      # PATHS IN PYKADEX
     path_to_PykaDex            = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex/'
     path_to_models             = path_to_PykaDex+'Models/'
@@ -46,7 +46,7 @@ if user=='sudi':
 
 ##################################################################################
 
-if user=='ben-pi':
+if user=='sugarfree':
      # PATHS IN PYKADEX
     path_to_PykaDex            = '/home/pi/DocuMentos/PykaDex/'
     path_to_models             = path_to_PykaDex+'Models/'
