@@ -1,6 +1,6 @@
 
 #set this to your name
-user = 'ben'
+user = 'ben-pi'
 
 ##################################################################################
 
@@ -53,10 +53,11 @@ if user=='ben-pi':
     path_to_test_images        = path_to_PykaDex+'PykaDex_Model_Tester/test_images/'
 
     # PATHS OUTSIDE PYKADEX
-    path_to_pickles            = '/media/usb/PykaDex_TrainingData/pickle/'
-    path_to_logs               = '/media/usb/PykaDex_TrainingData//'
-    path_to_training_data_Gens = '/media/usb/PykaDex_TrainingData/'
-    path_to_training_data      = '/media/usb/PykaDex_TrainingData/'
+    path_to_usb                = '/media/pi/PI_EXT/'
+    path_to_pickles            = path_to_usb+'PykaDex_TrainingData/pickle/'
+    path_to_logs               = path_to_usb+'PykaDex_TrainingData//'
+    path_to_training_data_Gens = path_to_usb+'PykaDex_TrainingData/'
+    path_to_training_data      = path_to_usb+'PykaDex_TrainingData/'
 
     # CATEGORIES
     CATEGORIES                 = ['Bulbasaur','Charmander', 'Eevee', 'Pikachu', 'Squirtle']
