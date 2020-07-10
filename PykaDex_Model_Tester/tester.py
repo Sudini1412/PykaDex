@@ -62,44 +62,50 @@ def prepare(filepath):
 choice_list = list_models_in_dir('.')
 set_tab_complete_options(choice_list)
 
-model_ = input(yellow+'what model do you want to scan?\n'+input_colour)
-print(white)
+if len(choice_list) == 0:
+    print('no models in current dir')
 
-if model_ == 'exit':
-        exit(0)
+if len(choice_list) != 0:
+        
+    model_ = input(yellow+'what model do you want to scan?\n'+input_colour)
+    print(white)
 
-if model_ in choice_list:
-    model = tf.keras.models.load_model(path_to_models+model_)
+    if model_ == 'exit':
+            exit(0)
 
-else:
-    print(red+'not a valid input'+white)
 
-model = tf.keras.models.load_model(path_to_models+"newcnn.model")
+    if model_ in choice_list:
+        model = tf.keras.models.load_model(path_to_models+model_)
 
-print('#'*20)
-print('\nBegining Tests..')
-
-counter = 0
-sucssess_num = 0
-
-for image in os.listdir(path_to_test_images):
-    counter = counter + 1
-    pokemon = image.split('.')[0]
-
-    prediction1 = model.predict([prepare(path_to_test_images+image)])
-    
-    if CATEGORIES[int(prediction1[0][0])] == pokemon:
-        print(green+' - '+pokemon+' Sucessful'+white)
-        sucssess_num = sucssess_num + 1
     else:
-        print(red+' - '+pokemon+' Unsucessful ({})'.format(CATEGORIES[int(prediction1[0][0])])+white)
+        print(red+'not a valid input'+white)
 
-print('Tests complete with {}% accuracy'.format(float(sucssess_num/counter)*100))
-print('#'*20)
+    model = tf.keras.models.load_model(path_to_models+"newcnn.model")
 
-#other tests
-prediction3 = model.predict([prepare(path_to_test_images+"../sudi_bulba.jpg")])
-print('sudi test (pikachu) = {}'.format(CATEGORIES[int(prediction3[0][0])]))
+    print('#'*20)
+    print('\nBegining Tests..')
 
-prediction4 = model.predict([prepare(path_to_test_images+"../sudi_char.jpg")])
-print('sudi test 2 (pikachu) = {}'.format(CATEGORIES[int(prediction4[0][0])]))
+    counter = 0
+    sucssess_num = 0
+
+    for image in os.listdir(path_to_test_images):
+        counter = counter + 1
+        pokemon = image.split('.')[0]
+
+        prediction1 = model.predict([prepare(path_to_test_images+image)])
+        
+        if CATEGORIES[int(prediction1[0][0])] == pokemon:
+            print(green+' - '+pokemon+' Sucessful'+white)
+            sucssess_num = sucssess_num + 1
+        else:
+            print(red+' - '+pokemon+' Unsucessful ({})'.format(CATEGORIES[int(prediction1[0][0])])+white)
+
+    print('Tests complete with {}% accuracy'.format(float(sucssess_num/counter)*100))
+    print('#'*20)
+
+    #other tests
+    prediction3 = model.predict([prepare(path_to_test_images+"../sudi_bulba.jpg")])
+    print('sudi test (pikachu) = {}'.format(CATEGORIES[int(prediction3[0][0])]))
+
+    prediction4 = model.predict([prepare(path_to_test_images+"../sudi_char.jpg")])
+    print('sudi test 2 (pikachu) = {}'.format(CATEGORIES[int(prediction4[0][0])]))

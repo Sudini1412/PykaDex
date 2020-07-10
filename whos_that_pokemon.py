@@ -73,23 +73,27 @@ print('Images you can scan:')
 choice_list = list_jpgs_in_dir('.')
 set_tab_complete_options(choice_list)
 
-image = input(yellow+'what image do you want to scan?\n'+input_colour)
-print(white)
+if len(choice_list) == 0:
+    print('no jpgs in current dir')
 
-if image == 'exit':
-        exit(0)
+if len(choice_list) != 0:
+    image = input(yellow+'what image do you want to scan?\n'+input_colour)
+    print(white)
 
-if image in choice_list:
-    print(red+'='*78)
-    os.system('catimg '+catimg_default+' {}'.format(image))
-    prediction = model.predict([prepare(image)])
-    print(red+'='*78)
+    if image == 'exit':
+            exit(0)
 
-    print(pink+'The image scanned is of a {}{}'.format(yellow,CATEGORIES[int(prediction[0][0])]))
-    print(red+'='*78)
+    if image in choice_list:
+        print(red+'='*78)
+        os.system('catimg '+catimg_default+' {}'.format(image))
+        prediction = model.predict([prepare(image)])
+        print(red+'='*78)
 
-    text = 'espeak "The image scanned is of a {}"'.format(CATEGORIES[int(prediction[0][0])])
-    os.system(text)
+        print(pink+'The image scanned is of a {}{}'.format(yellow,CATEGORIES[int(prediction[0][0])]))
+        print(red+'='*78)
 
-else:
-    print(red+'not a valid input'+white)
+        text = 'espeak "The image scanned is of a {}"'.format(CATEGORIES[int(prediction[0][0])])
+        os.system(text)
+
+    else:
+        print(red+'not a valid input'+white)
