@@ -34,8 +34,14 @@ for gen in gens:
     for pokemon in gen:
         downloader.download(pokemon+' pokemon', limit=lim, adult_filter_off=True, force_replace=False)
         #moves data to new location as we dont like dataset/bing/...
-        # for pi there is no bing folder 
-        os.system('mv dataset/{} {}'.format(pokemon+'\ pokemon',path_to_training_data+'/'+gendir+'/'+pokemon))
+
+        #for bing-image-downloader 1.02
+        if bing_image_downloader_ver == '1.02':
+            os.system('mv dataset/bing/{} {}'.format(pokemon+'\ pokemon',path_to_training_data+'/'+gendir+'/'+pokemon))
+
+        # for bing-image-downloader v 1.03 there is no bing folder 
+        if bing_image_downloader_ver == '1.03':
+            os.system('mv dataset/{} {}'.format(pokemon+'\ pokemon',path_to_training_data+'/'+gendir+'/'+pokemon))
         #removes dataset/bing/ folder
         os.system('rm -rf dataset/')
 
