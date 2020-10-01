@@ -43,7 +43,7 @@ download.jpg
 
 ==============================================================================
 ```
-![screnshot](Documents/screenshot.png)
+![screenshot](Documents/screenshot.png)
 ```bash
 ==============================================================================
 The image scanned is of a Bulbasaur
