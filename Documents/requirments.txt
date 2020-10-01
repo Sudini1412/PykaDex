@@ -1,5 +1,4 @@
 antlr4-python2-runtime==4.7.2
-apsw==3.16.2.post1
 asn1crypto==0.24.0
 backports.functools-lru-cache==1.6.1
 backports.shutil-get-terminal-size==1.0.0
@@ -24,16 +23,12 @@ EasyProcess==0.3
 enum34==1.1.10
 fake-useragent==0.1.11
 feedparser==5.2.1
-futures==3.3.0
-get==2019.4.13
 google-api-core==1.21.0
 google-api-python-client==1.9.3
 google-auth==1.18.0
 google-auth-httplib2==0.0.3
 google-images-download==2.8.0
 googleapis-common-protos==1.52.0
-html5-parser==0.4.4
-html5lib==0.999999999
 httplib2==0.18.1
 idna==2.9
 ipaddress==1.0.23

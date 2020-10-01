@@ -1,5 +1,6 @@
 
 # MOVE THIS FILE INTO A SEPERATE LOCATION ON YOUR MACHINE
+sys.path.append('/mnt/c/Users/benja/Documents/Programming/Python Projects/bing_image_downloader')
 from bing_image_downloader import downloader
 import os
 from Python_General.config import *
