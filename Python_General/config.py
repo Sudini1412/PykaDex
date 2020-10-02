@@ -21,7 +21,6 @@ if user=='BLUNT-RAZ3R':
 
 
     catimg_default = '-w 75'
-    bing_image_downloader_ver = '1.0.2'
 
 ##################################################################################
 
@@ -42,7 +41,6 @@ if user=='sudi':
     CATEGORIES                 =  ['Charmander', 'Bulbasaur']
 
     catimg_default = '-t 75'
-    bing_image_downloader_ver = '1.0.2'
 
 ##################################################################################
 
@@ -64,6 +62,5 @@ if user=='sugarfree':
 
 
     catimg_default = '-w 75'
-    bing_image_downloader_ver = '1.0.2'
 
 ##################################################################################

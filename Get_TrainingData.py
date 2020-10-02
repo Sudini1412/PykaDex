@@ -1,6 +1,7 @@
 
 # MOVE THIS FILE INTO A SEPERATE LOCATION ON YOUR MACHINE
 sys.path.append('/mnt/c/Users/benja/Documents/Programming/Python Projects/bing_image_downloader')
+
 from bing_image_downloader import downloader
 import os
 from Python_General.config import *
@@ -36,13 +37,9 @@ for gen in gens:
         downloader.download(pokemon+' pokemon', limit=lim, adult_filter_off=True, force_replace=False)
         #moves data to new location as we dont like dataset/bing/...
 
-        #for bing-image-downloader 1.0.2
-        if bing_image_downloader_ver == '1.0.2':
-            os.system('mv dataset/bing/{} {}'.format(pokemon+'\ pokemon',path_to_training_data+'/'+gendir+'/'+pokemon))
-
-        # for bing-image-downloader v 1.0.3 there is no bing folder 
-        if bing_image_downloader_ver == '1.0.3':
-            os.system('mv dataset/{} {}'.format(pokemon+'\ pokemon',path_to_training_data+'/'+gendir+'/'+pokemon))
+        # bing-image-downloader 1.0.2 fork
+        os.system('mv dataset/bing/{} {}'.format(pokemon+'\ pokemon',path_to_training_data+'/'+gendir+'/'+pokemon))
+        
         #removes dataset/bing/ folder
         os.system('rm -rf dataset/')
 
