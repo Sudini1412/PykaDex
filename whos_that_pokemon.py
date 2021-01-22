@@ -1,4 +1,6 @@
 import tensorflow as tf 
+import sys
+sys.path.append("../") 
 from Python_General.colours import *
 from Python_General.config import *
 import readline

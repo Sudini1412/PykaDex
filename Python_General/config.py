@@ -6,15 +6,15 @@ user = socket.gethostname()
 
 if user=='BLUNT-RAZ3R':
      # PATHS IN PYKADEX
-    path_to_PykaDex            = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex/'
+    path_to_PykaDex            = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex/'
     path_to_models             = path_to_PykaDex+'Models/'
     path_to_test_images        = path_to_PykaDex+'PykaDex_Model_Tester/test_images/'
 
     # PATHS OUTSIDE PYKADEX
-    path_to_pickles            = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/Trial_Data3/pickle/'
-    path_to_logs               = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/logs/'
-    path_to_training_data_Gens = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/'
-    path_to_training_data      = '/mnt/c/Users/benja/Documents/Programming/Python Projects/PykaDex_TrainingData/Trial_Data3/'
+    path_to_pickles            = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex_TrainingData/Trial_Data3/pickle/'
+    path_to_logs               = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex_TrainingData/logs/'
+    path_to_training_data_Gens = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex_TrainingData/'
+    path_to_training_data      = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex_TrainingData/Trial_Data3/'
 
     # CATEGORIES
     CATEGORIES                 = ['Bulbasaur','Charmander', 'Eevee', 'Pikachu', 'Squirtle']

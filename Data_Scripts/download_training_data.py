@@ -1,5 +1,7 @@
 from bing_image_downloader import downloader
 import os
+import sys
+sys.path.append("../") 
 from Python_General.config import *
 
 #######################################################
