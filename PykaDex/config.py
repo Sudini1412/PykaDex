@@ -13,8 +13,8 @@ if user=='BLUNT-RAZ3R':
     # PATHS OUTSIDE PYKADEX
     path_to_pickles            = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex_TrainingData/Trial_Data3/pickle/'
     path_to_logs               = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex_TrainingData/logs/'
-    path_to_training_data_Gens = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex_TrainingData/'
-    path_to_training_data      = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex_TrainingData/Trial_Data3/'
+    path_to_training_data_Gens = path_to_PykaDex+'Training_Data/'
+    path_to_training_data      = path_to_PykaDex+'Training_Data/Trial_Data3/'
 
     # CATEGORIES
     CATEGORIES                 = ['Bulbasaur','Charmander', 'Eevee', 'Pikachu', 'Squirtle']
