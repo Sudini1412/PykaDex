@@ -9,21 +9,69 @@ import imgaug as ia
 from imgaug import augmenters as iaa
 import numpy as np
 import os
+from PIL import Image
 
-def augment_image(image_loc,aug_loc,N,show=True):
+
+def transparency_checker(image):
+    img = Image.open(image, 'r')
+    if img.mode == "P":
+        transparent = img.info.get("transparency", -1)
+        for _, index in img.getcolors():
+            if index == transparent:
+                return True
+    elif img.mode == "RGBA":
+        extrema = img.getextrema()
+        if extrema[3][0] < 255:
+            return True
+    return False
+
+def bg_swap(poke_file,bg_file,comb_file):
+    """
+    """
+    pokemon = Image.open(poke_file, 'r')
+    background = Image.open(bg_file,'r')
+    background= background.resize(pokemon.size)
+    comb_img = Image.new('RGB', (pokemon.size), (0, 0, 0, 0))
+    comb_img.paste(background, (0,0))
+    comb_img.paste(pokemon, (0,0), mask=pokemon)
+    final = comb_img.convert('RGB')
+    final.save(comb_file, format="jpeg")
+    
+def augment_image(image_loc,aug_loc,N,show=True,sub_dirs=None):
     """
     image_loc = path to orginal image
     aug_loc   = path to augmented images
     N = number of augmented images generated
     """
 
+    ##########################################################
+    # check if image transparent
+    ##########################################################
+
+    if transparency_checker(image_loc) == True:
+        print( ' - TRANSPARENT')
+
+        if not os.path.exists(bg_folder):
+            print('cant locate backgrounds')
+
+        for dirpath, dirs, files in os.walk(bg_folder):  
+            for filename in files:
+                background = os.path.join(dirpath,filename)
+                
+                new_combined_filename = os.path.join(comb_folder,image_loc[len(source_loc):])
+
+                if not os.path.exists(os.path.join(comb_folder,sub_dirs)):
+                    os.makedirs(os.path.join(comb_folder,sub_dirs))
+
+                bg_swap(image_loc,background,new_combined_filename)
+                augment_image(new_combined_filename,aug_loc,N,show=False,sub_dirs=sub_dirs)
+
     #########################
     # get image
     #########################
 
 
-    image = imageio.imread(image_loc)
-
+    image = imageio.imread(image_loc, as_gray=False, pilmode="RGB")
     if show==True:
         print("Original:")
         ia.imshow(image)
@@ -57,34 +105,52 @@ def augment_image(image_loc,aug_loc,N,show=True):
     for n in range(0,len(images_aug)):
         new_image_name = "{}/{}-A{}.jpg".format(aug_loc,(image_loc.split('/')[-1]).split('.')[0],n)
         imageio.imwrite(new_image_name, images_aug[n])
-    print(" [] - augmented images saved to '{}'".format(aug_loc))
+    print(" [] - augmented images saved to '{}'".format(sub_dirs))
 
     #############################
 
 
 def augment_folder(folder_loc,aug_loc,N):
     """
-    folder_loc = path to orginal folder containing images to be augmented
+    source_loc = path to orginal folder containing images to be augmented
     aug_loc   = path to augmented images
     N = number of augmented images generated per orginal image
     """
 
-    for dirpath, dirs, files in os.walk(folder_loc):  
+    for dirpath, dirs, files in os.walk(source_loc):  
         for filename in files:
-                image_loc = os.path.join(dirpath,filename)
-                aug_loc_ = os.path.join(aug_loc,dirpath[len(folder_loc):])
-                try:
-                    augment_image(image_loc,aug_loc_,N,show=False)
-                except:
-                    print(' # image error - "{}"'.format(os.path.join(dirpath[len(folder_loc):],filename)))
-                    pass
+
+            sub_dirs = dirpath[len(source_loc):]
+            if filename[0] == '.':
+               print(' # image error - "{}"'.format(os.path.join(sub_dirs,filename)))
+               continue
+
+            image_loc = os.path.join(dirpath,filename)
+            aug_loc_ = os.path.join(aug_loc,sub_dirs)
+           
+
+            #try:
+            augment_image(image_loc,aug_loc_,N,show=False,sub_dirs=sub_dirs)
+            #except:
+            #    print(' # image error - "{}"'.format(os.path.join(dirpath[len(source_loc):],filename)))
+            #    pass
 
 ##############################################################
-# example of use
+# SETUP
 ##############################################################
 
 print('starting...')
-folder_loc = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex/Training_Data/Pokemon_source_images/'
+
+# source dir containg images to be augmented
+source_loc = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex/Training_Data/Pokemon_source_images/'
+
+# dir for augmented images to be placed (file structure will be kept i.e augmented/bublsaur/image,jpg)
 aug_loc = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex/Training_Data/Augmented_images/'
-augment_folder(folder_loc,aug_loc,100)
+
+# dir containg bg images for transparent pokemon
+bg_folder = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex/Training_Data/backgrounds/'
+
+# dir for combined transparent images with new backgrrounds
+comb_folder = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex/Training_Data/combined/'
+augment_folder(source_loc,aug_loc,100)
 print('finished.')
