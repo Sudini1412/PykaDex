@@ -8,9 +8,9 @@ import imageio
 import imgaug as ia
 from imgaug import augmenters as iaa
 import numpy as np
+import os
 
-
-def augment_image(image_loc,aug_loc,N):
+def augment_image(image_loc,aug_loc,N,show=True):
     """
     image_loc = path to orginal image
     aug_loc   = path to augmented images
@@ -21,9 +21,12 @@ def augment_image(image_loc,aug_loc,N):
     # get image
     #########################
 
+
     image = imageio.imread(image_loc)
-    print("Original:")
-    ia.imshow(image)
+
+    if show==True:
+        print("Original:")
+        ia.imshow(image)
 
     ###########################
     # augment
@@ -40,28 +43,48 @@ def augment_image(image_loc,aug_loc,N):
 
     images_aug = [seq(image=image) for _ in range(N)]
 
-    print("Augmented:")
-    ia.imshow(ia.draw_grid(images_aug[:8], cols=4, rows=2),)
+    if show==True:
+        print("Augmented:")
+        ia.imshow(ia.draw_grid(images_aug[:8], cols=4, rows=2),)
 
     ###########################
     # save augmented images
     ###########################
 
-    import os
-    try:
-        os.makedirs('augmented')
-    except OSError as e:
-        if e.errno != errno.EEXIST:
-            raise
+    if not os.path.exists(aug_loc):
+            os.makedirs(aug_loc)
 
     for n in range(0,len(images_aug)):
-        imageio.imwrite("{}/{}-augmented_image.jpg".format(aug_loc,n), images_aug[n])
-    print("images saved to 'augemented/'")
+        new_image_name = "{}/{}-A{}.jpg".format(aug_loc,(image_loc.split('/')[-1]).split('.')[0],n)
+        imageio.imwrite(new_image_name, images_aug[n])
+    print(" [] - augmented images saved to '{}'".format(aug_loc))
 
     #############################
 
 
-image_loc = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.ndtv.com%2Ftech%2Fimages%2Fgadgets%2Fpikachu_hi_pokemon.jpg&f=1&nofb=1"
-aug_loc = "augmented/"
+def augment_folder(folder_loc,aug_loc,N):
+    """
+    folder_loc = path to orginal folder containing images to be augmented
+    aug_loc   = path to augmented images
+    N = number of augmented images generated per orginal image
+    """
 
-augment_image(image_loc,aug_loc,100)
+    for dirpath, dirs, files in os.walk(folder_loc):  
+        for filename in files:
+                image_loc = os.path.join(dirpath,filename)
+                aug_loc_ = os.path.join(aug_loc,dirpath[len(folder_loc):])
+                try:
+                    augment_image(image_loc,aug_loc_,N,show=False)
+                except:
+                    print(' # image error - "{}"'.format(os.path.join(dirpath[len(folder_loc):],filename)))
+                    pass
+
+##############################################################
+# example of use
+##############################################################
+
+print('starting...')
+folder_loc = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex/Training_Data/Pokemon_source_images/'
+aug_loc = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex/Training_Data/Augmented_images/'
+augment_folder(folder_loc,aug_loc,100)
+print('finished.')
