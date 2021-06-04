@@ -1,9 +1,9 @@
 <p float="middle">
-  <img src="https://github.com/Sudini1412/PykaDex/assets/icon.png" width="15" />
-  <img src="https://github.com/Sudini1412/PykaDex/assets/icon.png" width="15" />
-  <img src="https://github.com/Sudini1412/PykaDex/assets/icon.png" width="30" />
-  <img src="https://github.com/Sudini1412/PykaDex/assets/icon.png" width="15" />
-  <img src="https://github.com/Sudini1412/PykaDex/assets/icon.png" width="15" />
+  <img src="https://github.com/Sudini1412/PykaDex/tree/master/assets/icon.png" width="15" />
+  <img src="https://github.com/Sudini1412/PykaDex/tree/master/assets/icon.png" width="15" />
+  <img src="https://github.com/Sudini1412/PykaDex/tree/master/assets/icon.png" width="30" />
+  <img src="https://github.com/Sudini1412/PykaDex/tree/master/assets/icon.png" width="15" />
+  <img src="https://github.com/Sudini1412/PykaDex/tree/master/assets/icon.png" width="15" />
 </p>
 
 # PykaDex
@@ -17,12 +17,18 @@ We have made several attempts at training a model with 10,000 plus photos per po
 So the next steps we are currently taking are to restructure the training data into training-test sets and clean the data using less images with augmentation techniques. The augmentation techniques involve using transparent images so we can over lay them onto multiple backgrounds as well as random cropping and filters.
 
 ## Instructions
-The project is currently in development, but feel free to lone and navigate to the repo and install requirements.
+The project is currently in development, but feel free to test it out.
+
+clone and navigate to the repo and install requirements.
 ```bash
 foo@bar:~$ git clone https://github.com/Sudini1412/PykaDex.git
 
 foo@bar:~$ cd PykaDex/ && pip3 install -r requirments.txt
 ```
+
+To test a Model:
+```bash
+foo@bar:~$ python3 PykaDex/Model_testing/tester.py
 
 
 ## whos_that_pokemon
