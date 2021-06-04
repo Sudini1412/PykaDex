@@ -59,7 +59,7 @@ def prepare(filepath):
 
 ##########################################################################
 
-choice_list = list_models_in_dir('.')
+choice_list = list_models_in_dir('../PyKaDex/Models/')
 set_tab_complete_options(choice_list)
 
 if len(choice_list) == 0:
@@ -80,7 +80,7 @@ if len(choice_list) != 0:
     else:
         print(red+'not a valid input'+white)
 
-    model = tf.keras.models.load_model(path_to_models+"newcnn.model")
+    # model = tf.keras.models.load_model(path_to_models+"newcnn.model")
 
     print('#'*20)
     print('\nBegining Tests..')
