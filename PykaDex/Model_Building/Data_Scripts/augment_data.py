@@ -10,7 +10,7 @@ from imgaug import augmenters as iaa
 import numpy as np
 import os
 from PIL import Image
-
+from PykaDex.Python_General.config import *
 
 def transparency_checker(image):
     img = Image.open(image, 'r')
@@ -105,7 +105,7 @@ def augment_image(image_loc,aug_loc,N,show=True,sub_dirs=None):
     for n in range(0,len(images_aug)):
         new_image_name = "{}/{}-A{}.jpg".format(aug_loc,(image_loc.split('/')[-1]).split('.')[0],n)
         imageio.imwrite(new_image_name, images_aug[n])
-    print(" [] - augmented images saved to '{}'".format(sub_dirs))
+    print(" [] - augmented images saved to '{}'".format(new_image_name))
 
     #############################
 
@@ -142,15 +142,15 @@ def augment_folder(folder_loc,aug_loc,N):
 print('starting...')
 
 # source dir containg images to be augmented
-source_loc = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex/Training_Data/Pokemon_source_images/'
+source_loc = path_to_training_data+'Pokemon_source_images/'
 
 # dir for augmented images to be placed (file structure will be kept i.e augmented/bublsaur/image,jpg)
-aug_loc = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex/Training_Data/Augmented_images/'
+aug_loc = path_to_training_data+'Augmented_images/'
 
 # dir containg bg images for transparent pokemon
-bg_folder = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex/Training_Data/backgrounds/'
+bg_folder = path_to_training_data+'backgrounds/'
 
 # dir for combined transparent images with new backgrrounds
-comb_folder = '/mnt/c/Users/benja/Programming/Python_Projects/PykaDex/Training_Data/combined/'
+comb_folder = path_to_training_data+'combined/'
 augment_folder(source_loc,aug_loc,100)
 print('finished.')

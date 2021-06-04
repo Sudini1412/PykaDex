@@ -29,7 +29,7 @@ foo@bar:~$ cd PykaDex/ && pip3 install -r requirments.txt
 To test a Model:
 ```bash
 foo@bar:~$ python3 PykaDex/Model_testing/tester.py
-
+```
 
 ## whos_that_pokemon
  Old script (failed) example used for terminal testing of induvidual images.

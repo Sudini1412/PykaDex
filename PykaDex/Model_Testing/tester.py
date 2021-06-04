@@ -59,7 +59,7 @@ def prepare(filepath):
 
 ##########################################################################
 
-choice_list = list_models_in_dir('../PyKaDex/Models/')
+choice_list = list_models_in_dir('PyKaDex/Models/')
 set_tab_complete_options(choice_list)
 
 if len(choice_list) == 0:
