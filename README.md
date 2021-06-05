@@ -8,7 +8,7 @@
 
 # PykaDex
 Authors: Sudi Ravinthran ([Sudini1412](https://github.com/Sudini1412))\, Ben Shellswell ([Shellywell123](https://github.com/Shellywell123))\
-A Python 3 project aiming to optimize nueral networks to indentify different pokemon, with an end goal of hosting a trained model on a server that can be accessed remotely. In the far future we also hope to make custom hardware possibly using ras-pi's and 3D printing to recreate a physical pokedex from the childrens tv series.
+A Python 3 project aiming to optimize nueral networks to indentify different pokemon, with an end goal of hosting a trained model on a server that can be accessed remotely. In the far future we also hope to make custom hardware possibly using ras-pi's and 3D printing to recreate a physical pokedex from the childrens TV series.
 
 ## Current Progress 
 
